@@ -28,6 +28,8 @@ ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
 ALLOWED_HOSTS = ['fantasiarental.com','www.fantasiarental.com']
 if not DEBUG:
     ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
+if DEBUG:
+    ALLOWED_HOSTS += ['127.0.0.1']
 
 # Application definition
 # python manage.py makemigrations
@@ -148,6 +150,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+USE_AR = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -159,6 +163,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles-cdn" # in production, we want cdn
+MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "uploads"
 
 from .cdn.conf import * # noqa
 
